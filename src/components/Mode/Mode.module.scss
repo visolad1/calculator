@@ -1,0 +1,31 @@
+.mode{
+    width: 243px;
+    height: 38px;
+    background-color: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #4D5562;
+    font-weight: 500;
+    border-radius: 6px;
+}
+
+.runtime, .constructor{
+    height: 36px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon{
+    width: 20px;
+    height: 20px;
+}
+
+.active{
+    background-color: #fff;
+    border: 1px solid #E2E3E5;
+    border-radius: 5px;
+}
