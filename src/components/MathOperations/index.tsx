@@ -4,13 +4,13 @@ import { Box } from '../UI/Box';
 import styles from './MathOperations.module.scss';
 
 export const MathOperations = () => {
+  const items = ['+', '-', '×', '/']
   return (
     <Box>
         <div className={styles.wrapper}>
-            <Button item='+'/>
-            <Button item='-'/>
-            <Button item='×'/>
-            <Button item='/'/>
+            {items.map(item => (
+              <Button item={item} />
+            ))}
         </div>
     </Box>
   )

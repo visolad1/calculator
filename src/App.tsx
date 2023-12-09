@@ -1,5 +1,5 @@
 import React from "react";
-import { ResultButton } from "./components/ResultButton";
+// import { ResultButton } from "./components/ResultButton";
 // import { NumericKeypad } from "./components/NumericKeypad";
 // import { Display } from "./components/Display";
 // import { MathOperations } from "./components/MathOperations";
@@ -10,7 +10,7 @@ function App() {
       {/* <Display value={0} /> */}
       {/* <MathOperations /> */}
       {/* <NumericKeypad /> */}
-      <ResultButton />
+      {/* <ResultButton /> */}
     </div>
 
   );
