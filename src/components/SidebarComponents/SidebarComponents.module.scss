@@ -4,3 +4,11 @@
     flex-direction: column;
     gap: 12px;
 }
+
+.disabled{
+    cursor: grab;
+}
+
+.disabled:active{
+    cursor: grabbing;
+}
