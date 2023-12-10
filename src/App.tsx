@@ -1,9 +1,7 @@
 import React from "react";
-import { Mode } from "./components/Mode";
-import { ResultButton } from "./components/ResultButton";
-import { NumericKeypad } from "./components/NumericKeypad";
-import { Display } from "./components/Display";
-import { MathOperations } from "./components/MathOperations";
+import { Canvas } from "./components/Canvas";
+import { SidebarComponents } from "./components/SidebarComponents";
+import styles from './App.module.scss'
 
 export interface IMode {
   mode: string,
@@ -14,16 +12,12 @@ export const ModeContext = React.createContext<IMode | undefined>(undefined);
 
 function App() {
   const [mode, setMode] = React.useState('constructor');
-  console.log(mode)
-
+  
   return (
-    <div className="App">
+    <div className={styles.app}>
       <ModeContext.Provider value={{mode, setMode}}>
-        <Display value={0} />
-        <MathOperations />
-        <NumericKeypad />
-        <ResultButton />   
-        <Mode />
+        <SidebarComponents />
+        <Canvas />
       </ModeContext.Provider>
     </div>
 
