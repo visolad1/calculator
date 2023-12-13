@@ -1,15 +1,35 @@
-import React from 'react'
+import React, { ReactComponentElement } from 'react'
 import { Display } from '../Display'
 import { MathOperations } from '../MathOperations'
 import { NumericKeypad } from '../NumericKeypad'
 import { ResultButton } from '../ResultButton'
 import styles from './SidebarComponents.module.scss'
-import { IMode } from '../../assets/types'
+import { IMode, IComponentObj } from '../../assets/types'
 import { ModeContext, ComponentsDisableContext } from '../../assets/context'
+
 
 export const SidebarComponents = () => {
   const [componentsDisable, setComponentsDisable] = React.useState<boolean>(true);
   const { mode } = React.useContext(ModeContext) as IMode;
+
+  const componentsList: IComponentObj[] = [
+    {
+      id: 'display',
+      component: <Display value={0} />
+    },
+    {
+      id: 'mathOperations',
+      component: <MathOperations />
+    },
+    {
+      id: 'numericKeypad',
+      component: <NumericKeypad />
+    },
+    {
+      id: 'resultButton',
+      component: <ResultButton />
+    }
+  ]
 
 
   React.useEffect(() => {
@@ -23,10 +43,11 @@ export const SidebarComponents = () => {
   return (
     <div className={styles.wrapper}>
       <ComponentsDisableContext.Provider value={{ componentsDisable, setComponentsDisable }}>
-        <Display value={0} />
-        <MathOperations />
-        <NumericKeypad />
-        <ResultButton />
+        {componentsList.map(({ id, component }, index) => (
+          <div key={id}>{component}</div>
+        ))}
+
+
       </ComponentsDisableContext.Provider>
     </div>
   )

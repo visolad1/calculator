@@ -17,3 +17,12 @@ export interface IButtonProps {
     color?: string;
     state: boolean;
 }
+
+export interface IComponentObj {
+  id: string,
+  component: React.ReactElement
+}
+
+export interface IComponentsList {
+  componentsList: IComponentObj[]
+}
