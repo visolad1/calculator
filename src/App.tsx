@@ -6,8 +6,12 @@ import { ModeContext } from "./assets/context";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
+
+
+
 function App() {
   const [mode, setMode] = React.useState('constructor');
+
 
   return (
     <div className={styles.app}>

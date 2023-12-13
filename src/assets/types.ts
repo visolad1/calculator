@@ -21,6 +21,7 @@ export interface IButtonProps {
 export interface IComponentObj {
   id: string,
   component: React.ReactElement
+  onDoubleClick?: (id: number) => void;
 }
 
 export interface IComponentsList {

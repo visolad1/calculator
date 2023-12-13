@@ -4,7 +4,7 @@ import { MathOperations } from '../MathOperations'
 import { NumericKeypad } from '../NumericKeypad'
 import { ResultButton } from '../ResultButton'
 import styles from './SidebarComponents.module.scss'
-import { IMode, IComponentObj } from '../../assets/types'
+import { IComponentObj, IMode } from '../../assets/types'
 import { ModeContext, ComponentsDisableContext } from '../../assets/context'
 
 
@@ -29,8 +29,7 @@ export const SidebarComponents = () => {
       id: 'resultButton',
       component: <ResultButton />
     }
-  ]
-
+  ];
 
   React.useEffect(() => {
     if (mode === 'constructor') {
@@ -43,11 +42,9 @@ export const SidebarComponents = () => {
   return (
     <div className={styles.wrapper}>
       <ComponentsDisableContext.Provider value={{ componentsDisable, setComponentsDisable }}>
-        {componentsList.map(({ id, component }, index) => (
-          <div key={id}>{component}</div>
+        {componentsList.map(obj => (
+          <div key={obj.id} draggable>{obj.component}</div>
         ))}
-
-
       </ComponentsDisableContext.Provider>
     </div>
   )
