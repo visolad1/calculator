@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Mode.module.scss'
-import { IMode } from '../../assets/types';
-import { ModeContext } from '../../assets/context';
+import { IMode } from '../../types';
+import { ModeContext } from '../../context';
 
 export const Mode = () => {
     const { mode, setMode } = React.useContext(ModeContext) as IMode;

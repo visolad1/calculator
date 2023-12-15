@@ -1,8 +1,8 @@
 import React from 'react'
 import { Button } from '../UI/Button'
 import styles from './NumericKeypad.module.scss'
-import { IComponentsDisable } from '../../assets/types'
-import { ComponentsDisableContext } from '../../assets/context'
+import { IComponentsDisable } from '../../types'
+import { ComponentsDisableContext } from '../../context'
 
 export const NumericKeypad = () => {
   const nums = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', ',']

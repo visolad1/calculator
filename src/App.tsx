@@ -2,10 +2,10 @@ import React from "react";
 import { Canvas } from "./components/Canvas";
 import { SidebarComponents } from "./components/SidebarComponents";
 import styles from './App.module.scss'
-import { CanvasContext, ComponentsDisableContext, ModeContext } from "./assets/context";
+import { CanvasContext, ComponentsDisableContext, ModeContext } from "./context";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { ICanvas } from "./assets/types";
+import { ICanvas } from "./types";
 
 
 function App() {

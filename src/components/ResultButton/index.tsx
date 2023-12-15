@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from '../UI/Button'
-import { IComponentsDisable } from '../../assets/types'
-import { ComponentsDisableContext } from '../../assets/context'
+import { IComponentsDisable } from '../../types'
+import { ComponentsDisableContext } from '../../context'
 
 export const ResultButton = () => {
   const { componentsDisable } = React.useContext(ComponentsDisableContext) as IComponentsDisable;

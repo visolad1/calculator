@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './Display.module.scss';
-import { Box } from '../UI/Box';
-import { IDisplayProps, IComponentsDisable } from '../../assets/types';
-import { ComponentsDisableContext } from '../../assets/context';
+import { IDisplayProps, IComponentsDisable } from '../../types';
+import { ComponentsDisableContext } from '../../context';
 
 export const Display: React.FC<IDisplayProps> = ({ value }) => {
   const [displayValue, setDisplayValue] = React.useState('');

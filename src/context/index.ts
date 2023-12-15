@@ -1,5 +1,5 @@
 import React from "react";
-import { IMode, IComponentsDisable, ICanvas } from "./types";
+import { IMode, IComponentsDisable, ICanvas } from "../types";
 
 
 export const ModeContext = React.createContext<IMode | undefined>(undefined);

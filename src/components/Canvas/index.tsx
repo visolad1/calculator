@@ -4,8 +4,8 @@ import canvasIcon from '../../icons/canvas-icon.svg';
 import isOverIcon from '../../icons/isover.svg'
 import { Mode } from '../Mode';
 import { useDrop } from 'react-dnd';
-import { CanvasContext } from '../../assets/context';
-import { ICanvas } from '../../assets/types';
+import { CanvasContext } from '../../context';
+import { ICanvas } from '../../types';
 
 export const Canvas = () => {
   const { canvas, setCanvas } = React.useContext(CanvasContext) as ICanvas
@@ -23,7 +23,6 @@ export const Canvas = () => {
     const updateCanvas = canvas.filter(components => (
       components !== item
     ))
-
     setCanvas(updateCanvas)
   }
 

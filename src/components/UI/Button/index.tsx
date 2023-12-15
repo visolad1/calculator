@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Button.module.scss';
-import { IButtonProps } from '../../../assets/types';
+import { IButtonProps } from '../../../types';
 
 export const Button: React.FC<IButtonProps> = ({ item, color, state }) => {
   return (
