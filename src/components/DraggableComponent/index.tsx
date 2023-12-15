@@ -13,6 +13,6 @@ export const DraggapleComponent: React.FC<IDraggableComponentProps> = ({ childre
     });
 
     return (
-        <div draggable={componentsDisable} ref={dragRef}>{children}</div>
+        <div draggable={componentsDisable} className={styles.draggableComponent} ref={dragRef}>{children}</div>
     )
 }

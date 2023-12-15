@@ -37,11 +37,11 @@ export const SidebarComponents = () => {
   return (
     <div className={`${styles.wrapper} ${mode === 'runtime' ? styles.runtime : ''}`}>
       {componentsList.map(obj => (
-        <Box>
-          <DraggapleComponent key={obj.id} id={obj.id}>
+        <DraggapleComponent key={obj.id} id={obj.id}>
+          <Box>
             {obj.component}
-          </DraggapleComponent>
-        </Box>
+          </Box>
+        </DraggapleComponent>
       ))}
     </div>
   )
