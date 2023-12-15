@@ -5,11 +5,11 @@ import { NumericKeypad } from '../NumericKeypad'
 import { ResultButton } from '../ResultButton'
 import styles from './SidebarComponents.module.scss'
 import { IComponentObj, IMode } from '../../assets/types'
-import { ModeContext, ComponentsDisableContext } from '../../assets/context'
+import { ModeContext } from '../../assets/context'
+import { DraggapleComponent } from '../DraggableComponent'
 
 
 export const SidebarComponents = () => {
-  const [componentsDisable, setComponentsDisable] = React.useState<boolean>(true);
   const { mode } = React.useContext(ModeContext) as IMode;
 
   const componentsList: IComponentObj[] = [
@@ -31,21 +31,15 @@ export const SidebarComponents = () => {
     }
   ];
 
-  React.useEffect(() => {
-    if (mode === 'constructor') {
-      setComponentsDisable(true);
-    } else if (mode === 'runtime') {
-      setComponentsDisable(false)
-    }
-  }, [mode]);
+  console.log(mode)
 
   return (
-    <div className={styles.wrapper}>
-      <ComponentsDisableContext.Provider value={{ componentsDisable, setComponentsDisable }}>
-        {componentsList.map(obj => (
-          <div key={obj.id} draggable>{obj.component}</div>
-        ))}
-      </ComponentsDisableContext.Provider>
+    <div className={`${styles.wrapper} ${mode === 'runtime' ? 'runtime' : ''}`}>
+      {componentsList.map(obj => (
+        <DraggapleComponent key={obj.id} id={obj.id}>
+          {obj.component}
+        </DraggapleComponent>
+      ))}
     </div>
   )
 }
