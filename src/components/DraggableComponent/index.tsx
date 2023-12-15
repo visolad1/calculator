@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, ReactNode } from 'react'
+import React from 'react'
 import { useDrag } from 'react-dnd';
 import { ComponentsDisableContext } from '../../assets/context';
 import { IComponentsDisable, IDraggableComponentProps } from '../../assets/types';
@@ -16,8 +16,6 @@ export const DraggapleComponent: React.FC<IDraggableComponentProps> = ({ childre
     });
 
     return (
-        <>
-            <div draggable={componentsDisable} ref={dragRef} className={`${isDragging ? 'drag' : ''} draggable`}>{children}</div>
-        </>
+        <div draggable={componentsDisable} ref={dragRef} className={`${isDragging ? styles.drag : ''} ${styles.draggable}`}>{children}</div>
     )
 }

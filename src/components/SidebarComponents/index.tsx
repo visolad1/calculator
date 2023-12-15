@@ -7,6 +7,7 @@ import styles from './SidebarComponents.module.scss'
 import { IComponentObj, IMode } from '../../assets/types'
 import { ModeContext } from '../../assets/context'
 import { DraggapleComponent } from '../DraggableComponent'
+import { Box } from '../UI/Box'
 
 
 export const SidebarComponents = () => {
@@ -34,11 +35,13 @@ export const SidebarComponents = () => {
   console.log(mode)
 
   return (
-    <div className={`${styles.wrapper} ${mode === 'runtime' ? 'runtime' : ''}`}>
+    <div className={`${styles.wrapper} ${mode === 'runtime' ? styles.runtime : ''}`}>
       {componentsList.map(obj => (
-        <DraggapleComponent key={obj.id} id={obj.id}>
-          {obj.component}
-        </DraggapleComponent>
+        <Box>
+          <DraggapleComponent key={obj.id} id={obj.id}>
+            {obj.component}
+          </DraggapleComponent>
+        </Box>
       ))}
     </div>
   )

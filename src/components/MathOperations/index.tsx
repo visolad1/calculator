@@ -9,12 +9,10 @@ export const MathOperations = () => {
   const { componentsDisable } = React.useContext(ComponentsDisableContext) as IComponentsDisable
   const items = ['+', '-', '×', '/']
   return (
-    <Box>
-      <div className={styles.wrapper}>
-        {items.map(item => (
-          <Button item={item} state={componentsDisable} />
-        ))}
-      </div>
-    </Box>
+    <div className={styles.wrapper}>
+      {items.map(item => (
+        <Button item={item} state={componentsDisable} />
+      ))}
+    </div>
   )
 }

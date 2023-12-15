@@ -12,15 +12,13 @@ export const Display: React.FC<IDisplayProps> = ({ value }) => {
   };
 
   return (
-    <Box>
-      <input
-        type="text"
-        value={displayValue}
-        onChange={handleInputChange}
-        className={styles.input}
-        placeholder='0'
-        disabled={componentsDisable}
-      />
-    </Box>
+    <input
+      type="text"
+      value={displayValue}
+      onChange={handleInputChange}
+      className={styles.input}
+      placeholder='0'
+      disabled={componentsDisable}
+    />
   );
 };
