@@ -19,7 +19,10 @@ export const Canvas = () => {
 
     // Добавляем компонент в список холста
     drop: (item: { children: ReactNode }) => {
-      setCanvas([...canvas, item.children]);
+      if (!canvas.includes(item.children)) {
+        // Если объект не найден, добавляем его в массив
+        setCanvas([...canvas, item.children]);
+      }
     },
 
     // Сбор информации о состоянии перетаскивания
@@ -41,7 +44,7 @@ export const Canvas = () => {
     }
 
   }
-
+  console.log(canvas[0] === canvas[1])
   return (
     <div>
       <Mode />
@@ -55,6 +58,7 @@ export const Canvas = () => {
 
         {!canvasEmpty && isOver && <img src={isOverIcon} className={styles.isover} alt="icon" />}
 
+        {/* Текст который виден когда холст пустой */}
         {canvasEmpty && (
           <div className={styles.text_wrapper}>
             <img src={canvasIcon} alt="icon" className={styles.icon} />

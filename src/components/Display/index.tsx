@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './Display.module.scss';
-import { IDisplayProps, IComponentsDisable } from '../../types';
+import { IComponentsDisable } from '../../types';
 import { ComponentsDisableContext } from '../../context';
 
-export const Display: React.FC<IDisplayProps> = ({ value }) => {
+export const Display = () => {
   const [displayValue, setDisplayValue] = React.useState('');
   const { componentsDisable } = React.useContext(ComponentsDisableContext) as IComponentsDisable;
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

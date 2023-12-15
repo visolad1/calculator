@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 export interface IMode {
   mode: string,
@@ -10,10 +10,6 @@ export interface IComponentsDisable {
   setComponentsDisable: (newState: boolean) => void
 }
 
-export interface IDisplayProps{
-    value: number
-}
-
 export interface IButtonProps {
     item: string;
     color?: string;
@@ -23,12 +19,8 @@ export interface IButtonProps {
 export interface IComponentObj {
   id: string,
   component: React.ReactElement
-  onDoubleClick?: (id: number) => void;
 }
 
-export interface IComponentsList {
-  componentsList: IComponentObj[]
-}
 
 export interface ICanvas{
   canvas: ReactNode[],
