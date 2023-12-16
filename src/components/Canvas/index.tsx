@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import styles from './Canvas.module.scss';
 import canvasIcon from '../../icons/canvas-icon.svg';
 import isOverIcon from '../../icons/isover.svg'
@@ -45,11 +45,11 @@ export const Canvas = () => {
   return (
     <div>
       <Mode />
-      <div className={`${styles.wrapper} ${canvasEmpty && isOver && styles.isOverWpap}`} ref={dropRef}>
+      <div className={`${styles.wrapper} ${canvasEmpty && isOver && styles.isOverWrap}`} ref={dropRef}>
         {/* Итерация компонентов в массиве холста*/}
         {canvas.map(({ children, id }) => (
-          <Box shadow={false}>
-            <div key={id} onDoubleClick={() => removeItem(id)}>
+          <Box shadow={false} key={id}>
+            <div className={`${id === 'display' && styles.display}`} onDoubleClick={() => removeItem(id)}>
               {children}
             </div>
           </Box>

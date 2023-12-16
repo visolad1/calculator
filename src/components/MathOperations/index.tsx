@@ -3,7 +3,7 @@ import { Button } from '../UI/Button';
 import styles from './MathOperations.module.scss';
 
 export const MathOperations = () => {
-  const items = ['+', '-', '×', '/']
+  const items = ['/', '×', '-', '+']
   return (
     <div className={styles.wrapper}>
       {items.map(item => (

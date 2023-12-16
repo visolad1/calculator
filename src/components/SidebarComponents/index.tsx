@@ -53,6 +53,7 @@ export const SidebarComponents = () => {
           </DraggapleComponent>
         </Box>
       ))}
-    </div>
+    </div>  
+
   )
 }
