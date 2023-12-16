@@ -6,6 +6,7 @@ import { Mode } from '../Mode';
 import { useDrop } from 'react-dnd';
 import { CanvasContext, ModeContext } from '../../context';
 import { ICanvas, IDraggableComponentProps, IMode } from '../../types';
+import { Box } from '../UI/Box';
 
 
 export const Canvas = () => {
@@ -47,9 +48,11 @@ export const Canvas = () => {
       <div className={`${styles.wrapper} ${canvasEmpty && isOver && styles.isOverWpap}`} ref={dropRef}>
         {/* Итерация компонентов в массиве холста*/}
         {canvas.map(({ children, id }) => (
-          <div key={id} onDoubleClick={() => removeItem(id)}>
-            {children}
-          </div>
+          <Box shadow={false}>
+            <div key={id} onDoubleClick={() => removeItem(id)}>
+              {children}
+            </div>
+          </Box>
         ))}
 
         {!canvasEmpty && isOver && <img src={isOverIcon} className={styles.isover} alt="icon" />}

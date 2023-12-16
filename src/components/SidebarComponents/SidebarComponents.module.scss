@@ -5,11 +5,12 @@
     gap: 12px;
 }
 
-.runtime{
-    opacity: 0.5;
+.runtime {
+    opacity: 0.3;
+    cursor: none;
 }
 
-.used{
-    opacity: 0.3;
+.used {
+    opacity: 0.5;
     user-select: none;
 }
