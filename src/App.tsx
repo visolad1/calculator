@@ -34,8 +34,8 @@ function App() {
           {/* Контекст для передачи состояния холста, какие в нем компоненты */}
           <CanvasContext.Provider value={{ canvas, setCanvas }} >
             <DndProvider backend={HTML5Backend}>
-              <SidebarComponents />
-              <Canvas />
+              <div className={styles.components}><SidebarComponents /></div>
+              <div className={styles.canvas}><Canvas /></div>
             </DndProvider>
           </CanvasContext.Provider>
         </ComponentsDisableContext.Provider>
