@@ -11,7 +11,7 @@ import styles from './SidebarComponents.module.scss'
 
 export const SidebarComponents = () => {
   const { mode } = React.useContext(ModeContext) as IMode;
-  // const { canvas } = React.useContext(CanvasContext) as ICanvas
+  const { canvas } = React.useContext(CanvasContext) as ICanvas
 
   const componentsList: IComponentObj[] = [
     {
@@ -32,13 +32,23 @@ export const SidebarComponents = () => {
     }
   ];
 
+  const canvasItemsId: string[] = [];
+
+  for (let i = 0; i < canvas.length; i++) {
+    canvasItemsId[i] = canvas[i].id
+  }
+
 
   return (
     <div className={`${styles.wrapper} ${mode === 'runtime' ? styles.runtime : ''}`}>
       {componentsList.map(obj => (
-        <DraggapleComponent key={obj.id} id={obj.id}>
+        canvasItemsId.includes(obj.id) && (
+          <DraggapleComponent key={obj.id} id={obj.id} draggable={false}>
+            <div className={styles.used}>{obj.component}</div>
+          </DraggapleComponent>
+        ) || <DraggapleComponent key={obj.id} id={obj.id} draggable={true}>
           <Box>
-            <div className=''>{obj.component}</div>
+            <div>{obj.component}</div>
           </Box>
         </DraggapleComponent>
       ))}

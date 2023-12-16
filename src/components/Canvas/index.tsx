@@ -5,24 +5,21 @@ import isOverIcon from '../../icons/isover.svg'
 import { Mode } from '../Mode';
 import { useDrop } from 'react-dnd';
 import { CanvasContext, ModeContext } from '../../context';
-import { ICanvas, IMode } from '../../types';
+import { ICanvas, IDraggableComponentProps, IMode } from '../../types';
 
 
 export const Canvas = () => {
   const { canvas, setCanvas } = React.useContext(CanvasContext) as ICanvas
   const { mode } = React.useContext(ModeContext) as IMode
 
-  // Реализации функциональности бросания компонента
+  // Реализации функциональности бросания объекта
   const [{ isOver }, dropRef] = useDrop({
     // Принимаем объект с типом 'component'
     accept: 'component',
 
-    // Добавляем компонент в список холста
-    drop: (item: { children: ReactNode }) => {
-      if (!canvas.includes(item.children)) {
-        // Если объект не найден, добавляем его в массив
-        setCanvas([...canvas, item.children]);
-      }
+    // Добавляем объект в список холста
+    drop: (item: IDraggableComponentProps) => {
+      setCanvas([...canvas, item])
     },
 
     // Сбор информации о состоянии перетаскивания
@@ -34,25 +31,24 @@ export const Canvas = () => {
   // Проверяем пустой ли массив холста
   const canvasEmpty = canvas.length === 0
 
-  // Функция для удаления компонента с холста 
-  const removeItem = (item: React.ReactNode) => {
+  // Функция для удаления компонента с холста по id
+  const removeItem = (id: string) => {
     if (mode != 'runtime') {
-      const updateCanvas = canvas.filter(components => (
-        components !== item
+      const updateCanvas = canvas.filter(obj => (
+        obj.id !== id
       ))
       setCanvas(updateCanvas)
     }
-
   }
-  console.log(canvas[0] === canvas[1])
+
   return (
     <div>
       <Mode />
       <div className={`${styles.wrapper} ${canvasEmpty && isOver && styles.isOverWpap}`} ref={dropRef}>
         {/* Итерация компонентов в массиве холста*/}
-        {canvas.map((component, index) => (
-          <div key={index} onDoubleClick={() => removeItem(component)} >
-            {component}
+        {canvas.map(({ children, id }) => (
+          <div key={id} onDoubleClick={() => removeItem(id)}>
+            {children}
           </div>
         ))}
 

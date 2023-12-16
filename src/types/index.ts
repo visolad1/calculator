@@ -18,16 +18,17 @@ export interface IButtonProps {
 
 export interface IComponentObj {
   id: string,
-  component: React.ReactElement
-}
-
-
-export interface ICanvas{
-  canvas: ReactNode[],
-  setCanvas: (newCanvas: ReactNode[]) => void
+  component: React.ReactNode
 }
 
 export interface IDraggableComponentProps {
     id: string,
-    children: ReactNode
+    children: ReactNode,
+    draggable?: boolean
 }
+
+export interface ICanvas{
+  canvas: IDraggableComponentProps[],
+  setCanvas: (newCanvas: IDraggableComponentProps[]) => void
+}
+
