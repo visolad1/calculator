@@ -5,12 +5,9 @@
     gap: 12px;
 }
 
-.runtime {
+.runtime, .used {
     opacity: 0.3;
     cursor: none;
-}
-
-.used {
-    opacity: 0.5;
+    pointer-events: none;
     user-select: none;
 }
