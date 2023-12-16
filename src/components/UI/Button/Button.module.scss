@@ -27,3 +27,7 @@
 .btn_purple:active:enabled {
     background-color: #8283e9;
 }
+
+.btn:disabled{
+    cursor: move;
+}
