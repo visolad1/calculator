@@ -1,23 +1,21 @@
 import React from 'react';
 import styles from './Display.module.scss';
-import { IDisplayValue, IMode } from '../../types';
-import { DisplayValueContext, ModeContext } from '../../context';
+import { IInputValue, IMode } from '../../types';
+import { InputValueContext, ModeContext } from '../../context';
 
 export const Display = () => {
-  const { displayValue, setDisplayValue } = React.useContext(DisplayValueContext) as IDisplayValue;
+  const [displayValue, setDisplayValue] = React.useState<string>('')
+  const { inputValue, setInputValue } = React.useContext(InputValueContext) as IInputValue;
   const { mode } = React.useContext(ModeContext) as IMode;
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
-    const isValidInput = inputValue.split('').every(char => /^[-+*,/0-9]$/.test(char));
-    if (isValidInput) {
-      setDisplayValue(inputValue);
-    }
+    setInputValue(inputValue);
   };
 
   return (
     <input
       type="text"
-      value={displayValue}
+      value={inputValue}
       onChange={handleInputChange}
       className={styles.input}
       placeholder='0'

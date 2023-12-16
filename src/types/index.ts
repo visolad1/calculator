@@ -26,7 +26,7 @@ export interface ICanvas{
   setCanvas: (newCanvas: IDraggableComponentProps[]) => void
 }
 
-export interface IDisplayValue {
-  displayValue: string,
-  setDisplayValue: (newValue: string) => void
+export interface IInputValue {
+  inputValue: string,
+  setInputValue: (newValue: string) => void
 }

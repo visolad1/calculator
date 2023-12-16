@@ -39,21 +39,25 @@ export const SidebarComponents = () => {
   }
 
   const modeConstructor = mode === 'constructor'
-  const modeRuntime = mode === 'runtime'
-
 
   return (
-    <div className={`${styles.wrapper} ${modeRuntime ? styles.runtime : ''}`}>
+    <div className={styles.wrapper}>
       {modeConstructor && componentsList.map(obj => (
-        <Box key={obj.id} shadow={!canvasItemsId.includes(obj.id) && modeConstructor}>
-          <DraggapleComponent id={obj.id} draggable={!canvasItemsId.includes(obj.id) && modeConstructor}>
+        canvasItemsId.includes(obj.id) && (
+          <Box shadow={false}>
             <div className={modeConstructor && canvasItemsId.includes(obj.id) ? styles.used : ''}>
               {obj.component}
             </div>
-          </DraggapleComponent>
-        </Box>
+          </Box>
+        ) || (
+          <Box shadow={true}>
+            <DraggapleComponent id={obj.id}>
+              <div>{obj.component}</div>
+            </DraggapleComponent>
+          </Box>
+        )
       ))}
-    </div>  
+    </div>
 
   )
 }
