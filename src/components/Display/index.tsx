@@ -4,12 +4,13 @@ import { IInputValue, IMode } from '../../types';
 import { InputValueContext, ModeContext } from '../../context';
 
 export const Display = () => {
-  const [displayValue, setDisplayValue] = React.useState<string>('')
-  const { inputValue, setInputValue } = React.useContext(InputValueContext) as IInputValue;
+  // const [displayValue, setDisplayValue] = React.useState<string>('')
   const { mode } = React.useContext(ModeContext) as IMode;
+
+  const { inputValue, setInputValue } = React.useContext(InputValueContext) as IInputValue;
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = event.target.value;
-    setInputValue(inputValue);
+    let num = event.target.value;
+    setInputValue(num)
   };
 
   return (
