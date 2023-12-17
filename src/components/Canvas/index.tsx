@@ -42,6 +42,13 @@ export const Canvas = () => {
     }
   }
 
+  canvas.forEach((elem, index) => {
+    if (elem.id === 'display') {
+      const display = canvas.splice(index, 1)[0];
+      canvas.unshift(display)
+    }
+  })
+
   return (
     <div>
       <Mode />
@@ -49,7 +56,7 @@ export const Canvas = () => {
         {/* Итерация компонентов в массиве холста*/}
         {canvas.map(({ children, id }) => (
           <Box shadow={false} key={id}>
-            <div className={`${id === 'display' && styles.display}`} onDoubleClick={() => removeItem(id)}>
+            <div onDoubleClick={() => removeItem(id)}>
               {children}
             </div>
           </Box>

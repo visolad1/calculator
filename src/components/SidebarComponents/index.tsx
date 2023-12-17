@@ -45,14 +45,14 @@ export const SidebarComponents = () => {
       {modeConstructor && componentsList.map(obj => (
         canvasItemsId.includes(obj.id) && (
           <Box shadow={false}>
-            <div className={modeConstructor && canvasItemsId.includes(obj.id) ? styles.used : ''}>
+            <div className={styles.used}>
               {obj.component}
             </div>
           </Box>
         ) || (
           <Box shadow={true}>
             <DraggapleComponent id={obj.id}>
-              <div>{obj.component}</div>
+              <div className={styles.draggable_component}>{obj.component}</div>
             </DraggapleComponent>
           </Box>
         )

@@ -1,7 +1,6 @@
 import React from 'react'
 import { useDrag } from 'react-dnd';
 import { IDraggableComponentProps } from '../../types';
-import styles from './DraggableComponent.module.scss'
 
 
 export const DraggapleComponent: React.FC<IDraggableComponentProps> = ({ children, id }) => {
@@ -11,6 +10,6 @@ export const DraggapleComponent: React.FC<IDraggableComponentProps> = ({ childre
     });
 
     return (
-        <div draggable className={styles.draggableComponent} ref={dragRef}>{children}</div>
+        <div draggable ref={dragRef}>{children}</div>
     )
 }
