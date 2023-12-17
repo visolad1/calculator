@@ -16,6 +16,9 @@ function App() {
   // display value
   const [inputValue, setInputValue] = React.useState<string>('')
 
+  React.useEffect(() => {
+    setInputValue('')
+  }, [mode])
 
   return (
     <div className={styles.app}>

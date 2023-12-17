@@ -30,3 +30,9 @@ export interface IInputValue {
   inputValue: string,
   setInputValue: (newValue: string) => void
 }
+
+export interface IDraggableObjProps {
+    id: string,
+    index: number,
+    children: React.ReactNode
+}
