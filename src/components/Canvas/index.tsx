@@ -7,7 +7,7 @@ import { useDrop } from 'react-dnd';
 import { CanvasContext, ModeContext } from '../../context';
 import { ICanvas, IDraggableComponentProps, IMode } from '../../types';
 import { Box } from '../UI/Box';
-
+import { Droppable, Draggable, DragDropContext, DropResult } from 'react-beautiful-dnd';
 
 export const Canvas = () => {
   const { canvas, setCanvas } = React.useContext(CanvasContext) as ICanvas
@@ -49,30 +49,68 @@ export const Canvas = () => {
     }
   })
 
+
+  const handleDragEnd = (result: DropResult) => {
+    if (!result.destination) {
+      return;
+    }
+
+    const newCanvas = Array.from(canvas);
+    const [draggedItem] = newCanvas.splice(result.source.index, 1);
+    newCanvas.splice(result.destination.index, 0, draggedItem);
+    setCanvas(newCanvas);
+  };
+
   return (
     <div>
       <Mode />
-      <div className={`${styles.wrapper} ${canvasEmpty && isOver && styles.isOverWrap}`} ref={dropRef}>
-        {/* Итерация компонентов в массиве холста*/}
-        {canvas.map(({ children, id }) => (
-          <Box shadow={false} key={id}>
-            <div onDoubleClick={() => removeItem(id)}>
-              {children}
+      <DragDropContext onDragEnd={handleDragEnd}>
+        <div className={`${styles.wrapper} ${canvasEmpty && isOver && styles.isOverWrap}`} ref={dropRef}>
+          <Droppable droppableId="canvasDropId">
+            {(provided) => (
+              <div
+                className={styles.drag_drop_wrapper}
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                {canvas.map((obj, index) => (
+                  <Box shadow={false}>
+                    <Draggable
+                      key={obj.id}
+                      draggableId={obj.id}
+                      index={index}
+                    >
+                      {(provided) => (
+                        <div
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          ref={provided.innerRef}
+                          onDoubleClick={() => removeItem(obj.id)}
+                        >
+                          {obj.children}
+
+                        </div>
+                      )}
+                    </Draggable>
+                  </Box>
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+
+          {!canvasEmpty && isOver && <img src={isOverIcon} className={styles.isover} alt="icon" />}
+
+          {/* Текст который виден когда холст пустой */}
+          {canvasEmpty && (
+            <div className={styles.text_wrapper}>
+              <img src={canvasIcon} alt="icon" className={styles.icon} />
+              <h4 className={styles.title}>Перетащите сюда</h4>
+              <p className={styles.subtitle}>любой элемент из левой панели</p>
             </div>
-          </Box>
-        ))}
-
-        {!canvasEmpty && isOver && <img src={isOverIcon} className={styles.isover} alt="icon" />}
-
-        {/* Текст который виден когда холст пустой */}
-        {canvasEmpty && (
-          <div className={styles.text_wrapper}>
-            <img src={canvasIcon} alt="icon" className={styles.icon} />
-            <h4 className={styles.title}>Перетащите сюда</h4>
-            <p className={styles.subtitle}>любой элемент из левой панели</p>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      </DragDropContext>
     </div>
   );
 };
