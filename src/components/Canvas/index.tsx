@@ -53,16 +53,16 @@ export const Canvas = () => {
         <div className={`${styles.wrapper} ${canvasEmpty && isOver && styles.isOverWrap}`} ref={dropRef}>
           <DroppableZone>
             {canvas.map((obj, index) => (
-              <Box shadow={false}>
-                {mode === 'constructor' && (
+              <Box shadow={false} key={obj.id}>
+                {mode === 'constructor' ? (
                   <DraggableObj id={obj.id} index={index}>
                     {obj.children}
                   </DraggableObj>
-                ) || (
-                    <>
-                      {obj.children}
-                    </>
-                  )}
+                ) : (
+                  <>
+                    {obj.children}
+                  </>
+                )}
 
               </Box>
             ))}
